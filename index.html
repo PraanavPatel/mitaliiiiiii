@@ -56,7 +56,10 @@ function triggerConfetti() {
             noButton.textContent = "It's not an option, pick Yes!";
             noButton.disabled = true;
         }
-
+ <script>
+    var audio = new Audio('https://github.com/user/project/blob/main/audio/sound.mp3?raw=true');
+    audio.play();
+</script>
     </script>
 </head>
 <body>
@@ -66,10 +69,5 @@ function triggerConfetti() {
         <button id="yesButton" onclick="growYes()" style="font-size: 20px;">Yes</button>
         <button id="noButton" onclick="shrinkNo()" style="font-size: 20px;">No</button>
     </div>
-
-    <!-- Audio tag to play your audio file -->
-    <video controls="" autoplay="" name="media">
-    <source src="https://github.com/PraanavPatel/mitaliiiiiii/blob/main/Ruth%20B.%20-%20Dandelions%20(Lyrics).mp3?raw=true" type="audio/mp3">
-</video>
 </body>
 </html>
