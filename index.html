@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script>
+        var yesPhrases = ["sure?", "Really sure?", "Thinking thrice now, you sure?", "No backing out!", "Okay, last chance."];
+        var noPhrases = [""];
+        var yesIndex = 0;
+        var noIndex = 0;
+
+        const jsConfetti = new JSConfetti();
+
+        function growYes() {
+            var yesButton = document.getElementById('yesButton');
+
+            var currentWidth = yesButton.offsetWidth;
+            var currentHeight = yesButton.offsetHeight;
+            var newWidth = currentWidth + 30; 
+            var newHeight = currentHeight + 30;
+            yesButton.style.width = newWidth + 'px';
+            yesButton.style.height = newHeight + 'px';
+
+            var fontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            var newFontSize = Math.min(fontSize + 2, newHeight * 0.5);
+            yesButton.style.fontSize = newFontSize + 'px';
+
+            if (yesIndex < yesPhrases.length) {
+                yesButton.textContent = yesPhrases[yesIndex++];
+            } else {
+                triggerConfetti();
+                document.querySelector('img').src = 'hug-hugs-2.gif';
+                yesButton.textContent = "Yaaaaaaayyyy";
+                yesButton.disabled = true;
+                
+            }
+
+        }
+function triggerConfetti() {
+    const jsConfetti = new JSConfetti();
+
+    setInterval(function() {
+        jsConfetti.addConfetti({
+            emojis: ['💜'],
+            confettiRadius: 6,
+            confettiNumber: 60,
+        });
+    }, 1000); // Change 1000 to the desired interval in milliseconds
+}
+
+        function shrinkNo() {
+            var noButton = document.getElementById('noButton');
+            noButton.textContent = "It's not an option, pick Yes!";
+            noButton.disabled = true;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="cute-fingers.gif" alt="Cute fingers gif" style="width: 200px; height: auto;"/>
+        <h1> Mitali..Will you be my forever Valentine? </h1>
+        <button id="yesButton" onclick="growYes()" style="font-size: 20px;">Yes</button>
+        <button id="noButton" onclick="shrinkNo()" style="font-size: 20px;">No</button>
+    </div>
+
+    <!-- Audio tag to play your audio file -->
+    <audio autoplay loop>
+        <source src="Ruth B. - Dandelions (Lyrics).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
